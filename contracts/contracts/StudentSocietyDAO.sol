@@ -46,9 +46,7 @@ contract StudentSocietyDAO {
         // maybe you need a constructor
         studentERC20 = new MyERC20("ZJUToken", "ZJUTokenSymbol");
         myERC721 = new MyERC721("ZJUToken", "ZJUTokenSymbol");
-        proposalNumber = 0;
-        bon = 0;
-        
+        proposalNumber = 0; 
     }
 
 
@@ -121,12 +119,8 @@ contract StudentSocietyDAO {
         require(_proposal.voterList[msg.sender] == false, "This user has voted already");
         _proposal.voterList[msg.sender]=true;
 
-        uint256 startTime=_proposal.startTime;
-        uint256 duration=_proposal.duration;
-        bool isend = _proposal.isend;
-
-        require((isend!=true) && (startTime + duration > block.timestamp), "Voting has closed.");
-        if(((isend==false)))   //the proposal is not over
+        require((_proposal.isend!=true) && (_proposal.startTime + _proposal.duration > block.timestamp), "Voting has closed.");
+        if(((_proposal.isend==false)))   //the proposal is not over
         {
             _proposal.voteNumber++;
             if(option == true)
@@ -136,35 +130,24 @@ contract StudentSocietyDAO {
             _proposal.option[msg.sender]=option;
         }
     }
-    uint32 bon;
+
     //end the proposal 
     function check()public{
         for(uint32 i = 1; i<=proposalNumber; i++)
         {
             Proposal storage _proposal = proposals[i];
-            uint256 startTime=_proposal.startTime;
-            uint256 duration=_proposal.duration;
-            uint32 voteNumber = _proposal.voteNumber;
-            uint32 agreement = _proposal.agreement;
-            bool isend = _proposal.isend;
-            if((isend == false) && (startTime + duration <= block.timestamp))       // is not end 
+            if((_proposal.isend == false) && (_proposal.startTime + _proposal.duration <= block.timestamp))       // is not end 
             {
                 _proposal.isend = true;
-                if(agreement > (voteNumber/2))      //pass
+                if(_proposal.agreement > (_proposal.voteNumber/2))      // pass
                 {
                     _proposal.ispass = true;
-                    // it's money and the voters' moneny
-                    uint32 count = 2*voteNumber-1;
-                    if(count<0)
-                    {
-                        count = 0;
-                    }
+                    uint32 count = 2*_proposal.voteNumber-1;    // voteNumber != 0
                     studentERC20.transfer(_proposal.proposer, PROPOSAL_AMOUNT+ count*VOTE_AMOUNT);
                     memberCount[_proposal.proposer] ++;
                     if(memberCount[_proposal.proposer]%3==0)
                     {
-                        myERC721.bonus(address(this),_proposal.proposer, bon);
-                        bon++;
+                        myERC721.bonus(_proposal.proposer);
                     } 
                 }
             }

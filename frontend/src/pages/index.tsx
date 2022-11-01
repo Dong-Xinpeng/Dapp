@@ -119,13 +119,11 @@ var StudentSocietyDAOPage = () =>{
                 await myERC20Contract.methods.approve(StudentSocietyDAOContract.options.address, proposalAmount).send({
                     from: account
                 })
+                await StudentSocietyDAOContract.methods.newProposal(title,content,duration).send({
+                    from: account
+                })
                 const mc = await StudentSocietyDAOContract.methods.getMemberCount(account).call()
                 setMemberCount(mc)
-           
-                await StudentSocietyDAOContract.methods.newProposal(title,content,duration).send({
-                    from: account,
-                    // gas:30000
-                })
                 const pn = await StudentSocietyDAOContract.methods.getProposalNumber().call()
                 setProposalNumber(pn)
                 const ind = await StudentSocietyDAOContract.methods.getProposalID().call()
@@ -144,16 +142,20 @@ var StudentSocietyDAOPage = () =>{
         }
         if(StudentSocietyDAOContract && myERC20Contract){
             try{
-                const mc = await StudentSocietyDAOContract.methods.getMemberCount(account).call()
-                setMemberCount(mc)
                 await myERC20Contract.methods.approve(StudentSocietyDAOContract.options.address, 0).send({
                     from: account
                 })
                 await StudentSocietyDAOContract.methods.check().send({
                     from: account
                 })
+                const mc = await StudentSocietyDAOContract.methods.getMemberCount(account).call()
+                setMemberCount(mc)
                 const pn = await StudentSocietyDAOContract.methods.getProposalNumber().call()
                 setProposalNumber(pn)
+                const ab = await myERC20Contract.methods.balanceOf(account).call()
+                setAccountBalance(ab)
+                const bc = await myERC721Contract.methods.balanceOf(account).call()
+                setBounsCount(bc)
                 const ind = await StudentSocietyDAOContract.methods.getProposalID().call()
                 setDataIndex(ind)
             }catch (error: any) {
@@ -315,7 +317,6 @@ var StudentSocietyDAOPage = () =>{
                     <div>当前用户：{account === '' ? '无用户连接' : account}</div>
                     <div>当前用户拥有浙大币数量：{account === '' ? 0 : accountBalance}  通过提案数量：{memberCount}   纪念品数量：{bounsCount}</div>
                 </div>
-                <div>花费{proposalAmount}发起提案</div>
                 
                 <div className='operation'>
                     
@@ -349,7 +350,7 @@ var StudentSocietyDAOPage = () =>{
                         />
                     <div style={{ margin: '5px' }} />
                     <div className='buttons'>
-                        <Button style={{ width: 100 }}  onClick={(e)=>onNewProposal(newProposalTitle,newProposalContent,duration)}>发起新提案</Button>
+                        <Button style={{ width: 200 }}  onClick={(e)=>onNewProposal(newProposalTitle,newProposalContent,duration)}>花费{proposalAmount}发起提案</Button>
                     </div>
                     
                     <div>
