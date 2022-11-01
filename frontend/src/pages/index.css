@@ -1,0 +1,25 @@
+.container {
+    width: 1500px;
+    height: 600px;
+    background: #5cb5e5;
+}
+
+.main {
+    padding: 0px;
+}
+
+.operation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.buttons {
+    /* height: 120px; */
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+     align-items: center;
+}
