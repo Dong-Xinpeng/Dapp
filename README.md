@@ -47,7 +47,24 @@
 
 ### 总体数据结构
 
+```solidity
+struct Proposal {
+        uint32 index;      // index of this proposal
+        address proposer;  // who make this proposal
+        uint256 startTime; // proposal start time
+        uint256 duration;  // proposal duration
+        string name;       // proposal name
+        string content; 	// proposal content
+        uint32 voteNumber; // the number of votor
+        uint32 agreement;	// the number of agreement
+        bool isend;
+        bool ispass;
+        mapping (address => bool) option;		// the option of each member 
+        mapping (address => bool) voterList;	// the list of members who has voted
+    }
+```
 
+其中``option``字段没有实际使用，但进行了维护。后续可以拓展为记名投票。
 
 ### 具体功能
 
