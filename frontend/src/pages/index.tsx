@@ -98,6 +98,8 @@ var StudentSocietyDAOPage = () =>{
                 await myERC20Contract.methods.airdrop().send({
                     from: account
                 })
+                const ab = await myERC20Contract.methods.balanceOf(account).call()
+                setAccountBalance(ab)
                 // alert('You have claimed ZJU Token.')
             } catch (error: any) {
                 alert("您已经领取过")
@@ -211,7 +213,7 @@ var StudentSocietyDAOPage = () =>{
         { title: '提案名', dataIndex: 'name', key: 'name' },
         // { title: '提案内容', dataIndex: 'content', key: 'content' },
         { title: '开始时间', dataIndex: 'startTime', key: 'startTime'},
-        { title: '持续时间', dataIndex: 'duration', key: 'duration' },
+        { title: '结束时间', dataIndex: 'duration', key: 'duration' },
         { title: '发起者', dataIndex: 'proposer', key: 'proposer' ,width:300},
         { title: '总投票数', dataIndex: 'voteNumber', key: 'voteNumber' },
         { title: '赞同数', dataIndex: 'agreement', key: 'agreement' },
@@ -270,23 +272,60 @@ var StudentSocietyDAOPage = () =>{
       ];
     
     var data = [
-        { key: 1, name: '0', duration: 1, description: 'My ',startTime:0, proposer:0,voteNumber:0,agreement:0,isend:"false",ispass:"false"},
+        { key: 1, name: '0', duration: "", description: 'My ',startTime:"", proposer:0,voteNumber:0,agreement:0,isend:"false",ispass:"false"},
       ];
     
     const GetData=()=>{
         data=[];
+        
         dataIndex.forEach(function aa(item,index,originArry){
+            var temp_time = new Date(item[2]*1000);
+            var year = temp_time.getFullYear();  
+            var month = (temp_time.getMonth()+1);  
+            var month_ = month < 10 ? "0"+month:month;
+            var day = temp_time.getDate();
+            var day_ = day < 10 ? "0"+day:day;  
+            var hour = temp_time.getHours(); 
+            var hour_ = hour < 10 ? "0"+hour:hour;
+            var minute = temp_time.getMinutes(); 
+            var minute_ = minute < 10 ? "0"+minute:minute;
+            var second = temp_time.getSeconds(); 
+            var second_ = second < 10 ? "0"+second:second;
+            var result_time = year+"-"+month_+"-"+day_+" "+hour_+":"+minute_+":"+second_;
+            var end_time = new Date((Number(item[2])+Number(item[3]))*1000);
+
+            var end_year = end_time.getFullYear();  
+            var end_month = end_time.getMonth()+1;  
+            var end_month_ = end_month < 10 ? "0"+end_month:end_month;
+            var end_day = end_time.getDate();  
+            var end_day_ = end_day < 10 ? "0"+end_day:end_day;
+            var end_hour = end_time.getHours(); 
+            var end_hour_ = end_hour < 10 ? "0"+end_hour:end_hour;
+            var end_minute = end_time.getMinutes(); 
+            var end_minute_ = end_minute < 10 ? "0"+end_minute:end_minute;
+            var end_second = end_time.getSeconds(); 
+            var end_second_ = end_second < 10 ? "0"+end_second:end_second;
+            var end_result_time = end_year+"-"+end_month_+"-"+end_day_+" "+end_hour_+":"+end_minute_+":"+end_second_;
+            var temp = "";
+            if(item[8])
+            {
+                temp = item[9]?"通过":"不通过";
+            }
+            else
+            {
+                temp = "未结束";
+            }
             data.push({
                 "key":index+1,
                 "name" : item[4],
                 // "content" : item[5],
-                "startTime" : item[2],
-                "duration" : item[3],
+                "startTime" : result_time,
+                "duration" : end_result_time,
                 "proposer" : item[1],
                 "voteNumber" : item[6],
                 "agreement" : item[7],
                 "isend" : item[8]?"已结束":"未结束",
-                "ispass" : item[9]?"通过":"不通过",
+                "ispass" : temp,
                 "description" : item[5],
             })
         })
