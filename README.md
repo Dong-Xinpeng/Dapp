@@ -237,13 +237,11 @@ contract MyERC721 is ERC721 {
 
 初始页面
 
-![](https://raw.githubusercontent.com/Dong-Xinpeng/ZJU-blockchain-course-Dapp/main/picture/%E5%88%9D%E5%A7%8B%E9%A1%B5%E9%9D%A2.jpg?token=GHSAT0AAAAAAB2234JOKLVY4JBU3JIGHZIKY3HTBAA)
-
-<img src="picture/初始页面.jpg" alt="屏幕截图 2022-11-06 161322" style="zoom: 50%;" />
+<img src="picture/初始页面.jpg" alt="初始页面" style="zoom:80%;" />
 
 连接钱包并领取空投
 
-<img src="picture/屏幕截图 2022-11-06 161427.jpg" alt="屏幕截图 2022-11-06 161427" style="zoom: 50%;" />
+<img src="picture/屏幕截图 2022-11-06 161427.jpg" alt="屏幕截图 2022-11-06 161427" style="zoom:80%;" />
 
 成功领取空投，此时该账户有浙大币10000
 
@@ -259,19 +257,19 @@ contract MyERC721 is ERC721 {
 
 通过提案前面的``+``号可以查看具体内容
 
-<img src="picture/屏幕截图 2022-11-06 161624.jpg" alt="屏幕截图 2022-11-06 161624" style="zoom:80%;" />
+![屏幕截图 2022-11-06 161624](picture/屏幕截图 2022-11-06 161624.jpg)
 
 用同一个账户进行投票，此处点击同意
 
-<img src="picture/屏幕截图 2022-11-06 161644.jpg" alt="屏幕截图 2022-11-06 161644" style="zoom:80%;" />
+![屏幕截图 2022-11-06 161644](picture/屏幕截图 2022-11-06 161644.jpg)
 
 成功花费50进行投票
 
-<img src="picture/屏幕截图 2022-11-06 161702.jpg" alt="屏幕截图 2022-11-06 161702" style="zoom:80%;" />
+![屏幕截图 2022-11-06 161702](picture/屏幕截图 2022-11-06 161702.jpg)
 
 等过了投票时间后查看最新状态，提案的状态刷新。该用户通过提案数变为1，浙大币增加 500 + 50*（2 * 1 - 1），变回10000.
 
-<img src="picture/屏幕截图 2022-11-06 162025.jpg" alt="屏幕截图 2022-11-06 162025" style="zoom:80%;" />
+![屏幕截图 2022-11-06 162025](picture/屏幕截图 2022-11-06 162025.jpg)
 
 该账号再次发布几个提案，对于最后一个名为aa的提案，用本账号与另外2个账号投2：1票
 
@@ -281,11 +279,11 @@ contract MyERC721 is ERC721 {
 
 此时再次点击领取空投，右下角与上方均有报错
 
-<img src="picture/屏幕截图 2022-11-06 164835.jpg" alt="屏幕截图 2022-11-06 164835" style="zoom:80%;" />
+![屏幕截图 2022-11-06 164835](picture/屏幕截图 2022-11-06 164835.jpg)
 
 重复投票或结束后投票叶会报错
 
-<img src="picture/屏幕截图 2022-11-06 164925.jpg" alt="屏幕截图 2022-11-06 164925" style="zoom:80%;" />
+![屏幕截图 2022-11-06 164925](picture/屏幕截图 2022-11-06 164925.jpg)
 
 ## 参考内容
 
