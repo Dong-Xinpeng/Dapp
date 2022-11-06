@@ -237,7 +237,9 @@ contract MyERC721 is ERC721 {
 
 初始页面
 
-<img src="https://raw.githubusercontent.com/Dong-Xinpeng/ZJU-blockchain-course-Dapp/main/picture/%E5%88%9D%E5%A7%8B%E9%A1%B5%E9%9D%A2.jpg?token=GHSAT0AAAAAAB2234JOKLVY4JBU3JIGHZIKY3HTBAA" alt="屏幕截图 2022-11-06 161322" style="zoom: 50%;" />
+![](https://raw.githubusercontent.com/Dong-Xinpeng/ZJU-blockchain-course-Dapp/main/picture/%E5%88%9D%E5%A7%8B%E9%A1%B5%E9%9D%A2.jpg?token=GHSAT0AAAAAAB2234JOKLVY4JBU3JIGHZIKY3HTBAA)
+
+<img src="picture/初始页面.jpg" alt="屏幕截图 2022-11-06 161322" style="zoom: 50%;" />
 
 连接钱包并领取空投
 
