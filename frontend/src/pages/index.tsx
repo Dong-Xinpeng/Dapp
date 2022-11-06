@@ -264,7 +264,7 @@ var StudentSocietyDAOPage = () =>{
                     alert(error.message)
                     alert("投票失败")
                 }
-                alert("投票成功")
+                // alert("投票成功")
             }else{
                 alert('Contract not exists.')
             }
