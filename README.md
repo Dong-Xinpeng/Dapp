@@ -237,7 +237,7 @@ contract MyERC721 is ERC721 {
 
 初始页面
 
-<img src="picture/屏幕截图 2022-11-06 161322.jpg" alt="屏幕截图 2022-11-06 161322" style="zoom: 50%;" />
+<img src="picture/初始页面.jpg" alt="屏幕截图 2022-11-06 161322" style="zoom: 50%;" />
 
 连接钱包并领取空投
 
