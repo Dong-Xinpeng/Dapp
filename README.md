@@ -237,11 +237,11 @@ contract MyERC721 is ERC721 {
 
 初始页面
 
-<img src="picture/屏幕截图 2022-11-06 161322.jpg" alt="屏幕截图 2022-11-06 161322" style="zoom:80%;" />
+<img src="picture/屏幕截图 2022-11-06 161322.jpg" alt="屏幕截图 2022-11-06 161322" style="zoom: 50%;" />
 
 连接钱包并领取空投
 
-<img src="picture/屏幕截图 2022-11-06 161427.jpg" alt="屏幕截图 2022-11-06 161427" style="zoom: 80%;" />
+<img src="picture/屏幕截图 2022-11-06 161427.jpg" alt="屏幕截图 2022-11-06 161427" style="zoom: 50%;" />
 
 成功领取空投，此时该账户有浙大币10000
 
